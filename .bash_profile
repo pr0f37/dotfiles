@@ -4,6 +4,6 @@
 PATH="/Library/Frameworks/Python.framework/Versions/3.7/bin:${PATH}"
 export PATH
 for file in ~/.{frisco}; do
-    source "$file";
+    [-r "$file"] && [-f "$file"] && source "$file";
 done;
 unset file;
