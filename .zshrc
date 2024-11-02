@@ -64,5 +64,5 @@ export NVM_DIR="$HOME/.nvm"
 
 alias vim=nvim
 if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
-  eval "$(oh-my-posh init zsh --config ~/.pr0f37.catpuccin_frappe.omp.json)"
+  eval "$(oh-my-posh init zsh --config $HOME/.config/.pr0f37.catpuccin_frappe.omp.json)"
 fi
