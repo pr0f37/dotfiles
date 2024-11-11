@@ -15,28 +15,26 @@ source "${ZINIT_HOME}/zinit.zsh"
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'               # Make completions non case-sensitive
 zstyle ':completion:*' list-colors 'di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'            # Add colors
 zstyle ':completion:*' menu-no
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'tree -L 2 $realpath'
-zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'tree -L 2 --color $realpath'
-zstyle ':fzf-tab:complete:ls:*' fzf-preview 'if [ -d $realpath ]; then ls --color $realpath; elif [[ "$(file -b --mime-type $realpath)" == "text"* ]]; then bat --style=numbers --color=always $realpath; fi'
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza --long --tree --level=2 --icons=auto --color=always --header --no-permissions --no-user --no-time --sort=type --total-size $realpath'
+zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'eza --long --tree --level=2 --icons=auto --color=always --header --no-permissions --no-user --no-time --sort=type --total-size $realpath'
+zstyle ':fzf-tab:complete:ls:*' fzf-preview 'if [ -d $realpath ]; then eza --long --icons=auto --color=always --header --no-permissions --no-user --no-time --sort=type --total-size $realpath; elif [[ "$(file -b --mime-type $realpath)" == "text"* ]]; then bat --style=numbers --color=always $realpath; fi'
 zstyle ':fzf-tab:*' popup-min-size 1000
 zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
-# completions
-eval "$(fzf --zsh)"
-eval "$(zoxide init --cmd cd zsh)"
-# fpath+=("$(brew --prefix)/share/zsh/site-functions")
-
 zinit for \
     light-mode \
-  Aloxaf/fzf-tab\
+  Aloxaf/fzf-tab \
   zsh-users/zsh-autosuggestions \
   zsh-users/zsh-completions \
-  zsh-users/zsh-syntax-highlighting 
-  
-# Snippets
-zinit snippet OMZP::git
+  zsh-users/zsh-syntax-highlighting
 
+fpath+=$XDG_CONFIG_HOME/poetry
 autoload -Uz compinit && compinit
 zinit cdreplay -q 
+# completions
+
+eval "$(zoxide init --cmd cd zsh)"
+eval "$(fzf --zsh)"
+eval "$(kubectl completion zsh)"
 
 # # history setup
 HISTFILE=~/.zsh_history
@@ -56,13 +54,14 @@ bindkey '^[[A' history-search-backward
 bindkey '^[[B' history-search-forward
 
 # # aliases
-alias ls="ls --color"
-
-export NVM_DIR="$HOME/.nvm"
-  [ -s "/usr/local/opt/nvm/nvm.sh" ] && \. "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
-  [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
-
+alias l=ls
+# alias ls="eza --color=always"
 alias vim=nvim
+
+# export NVM_DIR="$HOME/.nvm"
+#   [ -s "/usr/local/opt/nvm/nvm.sh" ] && \. "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+#   [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
 if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
   eval "$(oh-my-posh init zsh --config $HOME/.config/.pr0f37.catpuccin_frappe.omp.json)"
 fi
