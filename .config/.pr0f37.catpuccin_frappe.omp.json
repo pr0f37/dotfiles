@@ -5,30 +5,27 @@
     "blocks": [
         {
             "type": "prompt",
+            "newline": true,
             "alignment": "left",
             "segments": [
                 {
                     "type": "os",
                     "style": "plain",
-                    "template": "{{.Icon}} ",
+                    "template": "{{.Icon}} <p:closer>\uf105</> ",
                     "foreground": "p:os"
                 },
                 {
-                    "type": "session",
-                    "style": "plain",
-                    "template": "{{ .UserName }}@{{ .HostName }} ",
-                    "foreground": "p:blue"
-                },
-                {
-                    "type": "text",
-                    "style": "plain",
-                    "template": "\uf105",
-                    "foreground": "p:closer"
+                    "type": "status",
+                    "style": "diamond",
+                    "foreground_templates": [
+                        "{{ if .Error }}p:fail{{ end }}"
+                    ],
+                    "template": "\uef0e <p:closer>\uf105</> "
                 },
                 {
                     "type": "git",
                     "style": "plain",
-                    "template": " {{ .UpstreamIcon }}{{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }} \ueb4b {{ .StashCount }}{{ end }} ",
+                    "template": "{{ .UpstreamIcon }}{{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }} \ueb4b {{ .StashCount }}{{ end }} <p:closer>\uf105</> ",
                     "properties": {
                         "branch_icon": "\ue725 ",
                         "cherry_pick_icon": "\ue29b ",
@@ -44,6 +41,24 @@
                         "tag_icon": "\uf412 "
                     },
                     "foreground": "p:lavender"
+                },
+                {
+                    "type": "python",
+                    "style": "plain",
+                    "foreground": "p:yellow",
+                    "template": " {{ if .Error }}{{ .Error }}{{ else }}{{ if .Venv }}{{ .Venv }} {{ end }}{{ .Full }}{{ end }} <p:closer>\uf105</> "
+                },
+                {
+                    "type": "rust",
+                    "style": "plain",
+                    "foreground": "p:peach",
+                    "template": "  {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }} <p:closer>\uf105</> "
+                },
+                {
+                    "type": "lua",
+                    "style": "plain",
+                    "foreground": "p:blue",
+                    "template": "  {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }} <p:closer>\uf105</> "
                 }
             ]
         },
@@ -53,39 +68,55 @@
             "newline": true,
             "segments": [
                 {
+                    "alias": "Path",
                     "type": "path",
                     "style": "plain",
-                    "template": "{{ .Path }} ",
+                    "template": "{{ .Path }} <p:closer>\uf105</> ",
                     "properties": {
                         "folder_icon": "..\ue5fe..",
                         "home_icon": "\uf015",
-                        "style": "agnoster_full"
+                        "style": "mixed"
                     },
-                    "foreground": "p:lavender"
-                },
-                {
-                    "type": "text",
-                    "style": "plain",
-                    "template": "\uf105",
-                    "foreground": "p:closer"
+                    "foreground": "p:blue"
                 }
             ]
         }
     ],
-    "palette": {
-        "blue": "#8CAAEE",
-        "closer": "p:os",
-        "lavender": "#BABBF1",
-        "os": "#ACB0BE",
-        "pink": "#F4B8E4",
-        "fail": "#BF616A"
-    },
     "transient_prompt": {
+        "newline": true,
         "background": "transparent",
         "foreground": "p:closer",
-        "foreground_templates": [
-            "{{ if gt .Code 0 }}p:fail{{ end }}"
-        ],
-        "template": "{{ if gt .Code 0 }}\udb81\ude8c {{ else }}\udb82\udfc9 {{ end }}"
+        "template": "\udb82\udfc9 \uf105 {{ .Segments.Path.Location }} \uf105 "
+    },
+    "palette": {
+        "closer": "p:os",
+        "os": "#ACB0BE",
+        "fail": "#BF616A",
+        "rosewater": "#f2d5cf",
+        "flamingo": "#eebebe",
+        "pink": "#f4b8e4",
+        "mauve": "#ca9ee6",
+        "red": "#e78284",
+        "maroon": "#ea999c",
+        "peach": "#ef9f76",
+        "yellow": "#e5c890",
+        "green": "#a6d189",
+        "teal": "#81c8be",
+        "sky": "#99d1db",
+        "sapphire": "#85c1dc",
+        "blue": "#8caaee",
+        "lavender": "#babbf1",
+        "text": "#c6d0f5",
+        "subtext 1": "#b5bfe2",
+        "subtext 0": "#a5adce",
+        "overlay 2": "#949cbb",
+        "overlay 1": "#838ba7",
+        "overlay 0": "#737994",
+        "surface 2": "#626880",
+        "surface 1": "#51576d",
+        "surface 0": "#414559",
+        "base": "#303446",
+        "mantle": "#292c3c",
+        "crust": "#232634"
     }
 }

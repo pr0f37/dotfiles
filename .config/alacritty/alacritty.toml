@@ -1,8 +1,22 @@
 [general]
 import = [
-    "~/.config/alacritty/base16-dark.toml",
     "~/.config/alacritty/keybindings.toml",
-    "alacritty-theme/themes/gruvbox_dark.toml",
+    "~/.config/alacritty/catppuccin-frappe.toml",
 ]
+[mouse]
+hide_when_typing = true
+[cursor]
+style.shape = "Underline"
 [font]
-normal = { family = "menlo", style = "Regular" }
+normal = { family = "UbuntuMono Nerd Font Mono", style = "Regular" }
+size = 15.0
+
+[env]
+TERM = "xterm-256color"
+[window]
+padding.x = 10
+padding.y = 10
+
+decorations = "buttonless"
+
+# option_as_alt = "Both"
