@@ -8,15 +8,23 @@ hide_when_typing = true
 [cursor]
 style.shape = "Underline"
 [font]
-normal = { family = "UbuntuMono Nerd Font Mono", style = "Regular" }
+normal = { family = "UbuntuSansMono Nerd Font Mono", style = "Regular" }
 size = 15.0
 
 [env]
 TERM = "xterm-256color"
 [window]
 padding.x = 10
-padding.y = 10
+padding.y = 25
 
-decorations = "buttonless"
+decorations = "transparent"
 
-# option_as_alt = "Both"
+option_as_alt = "Both"
+
+[scrolling]
+history = 5000
+[keyboard]
+bindings = [
+    { key = "Right", mods = "Alt", chars = "\u001BF" },
+    { key = "Left", mods = "Alt", chars = "\u001BB" },
+]
