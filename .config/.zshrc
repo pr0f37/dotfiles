@@ -17,7 +17,7 @@ zstyle ':completion:*' list-colors 'di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43
 zstyle ':completion:*' menu-no
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -l --tree -L=2 --icons=auto --color=always --header --no-permissions --no-user --no-time --sort=type $realpath'
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'eza -l --tree -L=2 --icons=auto --color=always --header --no-permissions --no-user --no-time --sort=type $realpath'
-zstyle ':fzf-tab:complete:eza:*' fzf-preview 'if [ -d $realpath ]; then eza --la --icons=auto --color=always --header --no-permissions --no-user --no-time --sort=type $realpath; elif [[ "$(file -b --mime-type $realpath)" == "text"* ]]; then bat --style=numbers --color=always $realpath; fi'
+zstyle ':fzf-tab:complete:eza:*' fzf-preview 'if [ -d $realpath ]; then eza -l --tree --icons=auto --color=always --header --no-permissions --no-user --no-time --sort=type $realpath; elif [[ "$(file -b --mime-type $realpath)" == "text"* ]]; then bat --style=numbers --color=always $realpath; fi'
 zstyle ':fzf-tab:*' popup-min-size 1000
 zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
 zinit for \
