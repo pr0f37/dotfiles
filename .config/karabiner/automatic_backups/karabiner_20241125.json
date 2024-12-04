@@ -262,16 +262,6 @@
                             "key_code": "right_command"
                         }
                     ]
-                },
-                {
-                    "from": {
-                        "key_code": "caps_lock"
-                    },
-                    "to": [
-                        {
-                            "key_code": "escape"
-                        }
-                    ]
                 }
             ],
             "virtual_hid_keyboard": {
