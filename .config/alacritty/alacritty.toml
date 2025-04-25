@@ -4,11 +4,11 @@ import = [
     "~/.config/alacritty/catppuccin-frappe.toml",
 ]
 [mouse]
-hide_when_typing = true
+hide_when_typing = false 
 [cursor]
 style.shape = "Underline"
 [font]
-normal = { family = "UbuntuMono Nerd Font Mono", style = "Regular" }
+normal = { family = "UbuntuSansMono Nerd Font Mono", style = "Regular" }
 size = 16.0
 
 [env]
