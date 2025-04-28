@@ -1,5 +1,4 @@
 return {
-
   {
     "mfussenegger/nvim-dap",
     opional = true,

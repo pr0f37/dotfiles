@@ -1,10 +1,5 @@
 return {
   {
-    "catppuccin/nvim",
-    name = "catppuccin",
-    priority = 1000,
-  },
-  {
     "LazyVim/LazyVim",
     opts = {
       colorscheme = "catppuccin-frappe",
@@ -27,5 +22,8 @@ return {
       { "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>" },
       { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
     },
+  },
+  {
+    "brenoprata10/nvim-highlight-colors",
   },
 }

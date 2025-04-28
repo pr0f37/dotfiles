@@ -36,8 +36,8 @@ return {
           settings = {
             python = {
               analysis = {
-                useLibraryCodeForTypes = true,
-                ignore = { "*" },
+                disableOrganizeImports = true,
+                -- ignore = { "*" },
                 diagnosticSeverityOverrides = {
                   reportUnusedVariable = "warning", -- or anything
                 },
@@ -74,8 +74,9 @@ return {
       setup = {
         ["ruff"] = function()
           LazyVim.lsp.on_attach(function(client, _)
-            -- Disable hover in favor of Pyright
+            --use ruff as a formatter and pyright as linter, type checker and hover provider
             client.server_capabilities.hoverProvider = false
+            client.server_capabilities.diagnosticProvider = nil
           end, "ruff")
         end,
       },

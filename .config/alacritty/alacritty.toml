@@ -9,7 +9,7 @@ hide_when_typing = false
 style.shape = "Underline"
 [font]
 normal = { family = "UbuntuSansMono Nerd Font Mono", style = "Regular" }
-size = 16.0
+size = 15.0
 
 [env]
 TERM = "xterm-256color"
@@ -19,7 +19,7 @@ padding.y = 25
 
 decorations = "transparent"
 
-option_as_alt = "Both"
+option_as_alt = "OnlyLeft"
 
 [scrolling]
 history = 5000

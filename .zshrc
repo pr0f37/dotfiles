@@ -1,3 +1,4 @@
+export LANG=en_US.UTF-8
 export XDG_CONFIG_HOME=$HOME/.config
 export LDFLAGS="-L/usr/local/opt/libpq/lib"
 export CPPFLAGS="-I/usr/local/opt/libpq/include"
