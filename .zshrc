@@ -4,6 +4,9 @@ export LDFLAGS="-L/usr/local/opt/libpq/lib"
 export CPPFLAGS="-I/usr/local/opt/libpq/include"
 export PKG_CONFIG_PATH="/usr/local/opt/libpq/lib/pkgconfig"
 
+export LDFLAGS="-L/opt/local/lib"
+export CPPFLAGS="-I/opt/local/include"
+
 export PATH="/usr/local/sbin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"

@@ -26,9 +26,21 @@ return {
       dap.configurations.python = {
         {
           name = "Launch current file",
-          type = "python",
+          type = "debugpy",
           request = "launch",
           program = "${file}",
+          console = "integratedTerminal", -- Can be "externalTerminal" or "none"
+        },
+        {
+          name = "Fastapi",
+          type = "debugpy",
+          request = "launch",
+          module = "uvicorn",
+          args = {
+            "cr_scraper.api.main:app",
+            "--host=0.0.0.0",
+            "--port=8000",
+          },
           console = "integratedTerminal", -- Can be "externalTerminal" or "none"
         },
       }
