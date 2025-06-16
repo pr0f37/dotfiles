@@ -1,19 +1,18 @@
 {
-  "$schema" : "https:\/\/schema.linearmouse.app\/0.10.0",
   "schemes" : [
     {
-      "if" : {
-        "device" : {
-          "productName" : "Apple Internal Keyboard \/ Trackpad",
-          "serialNumber" : "D3H73160F81FTV4A16BS",
-          "productID" : "0x274",
-          "category" : "trackpad",
-          "vendorID" : "0x5ac"
-        }
-      },
       "scrolling" : {
         "reverse" : {
           "horizontal" : false
+        }
+      },
+      "if" : {
+        "device" : {
+          "productName" : "Apple Internal Keyboard \/ Trackpad",
+          "productID" : "0x274",
+          "category" : "trackpad",
+          "vendorID" : "0x5ac",
+          "serialNumber" : "D3H73160F81FTV4A16BS"
         }
       }
     },
@@ -25,46 +24,47 @@
         "device" : {
           "productName" : "Karabiner DriverKit VirtualHIDPointing 1.6.0",
           "serialNumber" : "pqrs.org:Karabiner-DriverKit-VirtualHIDPointing",
-          "productID" : "0x27da",
           "category" : "mouse",
-          "vendorID" : "0x16c0"
+          "vendorID" : "0x16c0",
+          "productID" : "0x27da"
         }
       }
     },
     {
+      "scrolling" : {
+        "distance" : {
+          "vertical" : 2,
+          "horizontal" : 6
+        },
+        "reverse" : {
+          "horizontal" : true
+        },
+        "acceleration" : 1,
+        "speed" : 0
+      },
       "buttons" : {
-        "universalBackForward" : true,
+        "universalBackForward" : false,
         "mappings" : [
           {
-            "action" : "missionControl",
-            "option" : false,
-            "shift" : false,
             "button" : 5,
+            "shift" : false,
+            "option" : false,
+            "control" : false,
             "command" : false,
-            "control" : false
+            "action" : "missionControl"
           }
         ]
       },
       "if" : {
         "device" : {
-          "productName" : "MX Master 3S",
-          "serialNumber" : "EB0A5353",
-          "productID" : "0xb034",
           "category" : "mouse",
-          "vendorID" : "0x46d"
-        }
-      },
-      "scrolling" : {
-        "speed" : 0,
-        "acceleration" : 1,
-        "reverse" : {
-          "horizontal" : true
-        },
-        "distance" : {
-          "horizontal" : 3,
-          "vertical" : 2
+          "vendorID" : "0x46d",
+          "productID" : "0xb034",
+          "productName" : "MX Master 3S",
+          "serialNumber" : "EB0A5353"
         }
       }
     }
-  ]
+  ],
+  "$schema" : "https:\/\/schema.linearmouse.app\/0.10.0"
 }

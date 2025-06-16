@@ -39,6 +39,7 @@ zinit cdreplay -q
 eval "$(zoxide init --cmd cd zsh)"
 eval "$(fzf --zsh)"
 eval "$(kubectl completion zsh)"
+eval "$(uv generate-shell-completion zsh)"
 
 # # history setup
 HISTFILE=~/.zsh_history
