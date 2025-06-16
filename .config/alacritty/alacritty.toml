@@ -4,6 +4,7 @@ import = ["~/.config/alacritty/catppuccin-frappe.toml"]
 hide_when_typing = false
 [cursor]
 style.shape = "Underline"
+vi_mode_style = "Block"
 [font]
 # normal = { family = "JetBrainsMono Nerd Font Mono", style = "Light" }
 normal = { family = "UbuntuSansMono Nerd Font Mono", style = "Regular" }

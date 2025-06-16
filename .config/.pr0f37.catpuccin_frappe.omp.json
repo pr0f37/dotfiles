@@ -3,7 +3,7 @@
   "palette": {
     "base": "#303446",
     "blue": "#8caaee",
-    "closer": "p:os",
+    "closer": "p:overlay 2",
     "crust": "#232634",
     "fail": "#BF616A",
     "flamingo": "#eebebe",
@@ -12,7 +12,7 @@
     "mantle": "#292c3c",
     "maroon": "#ea999c",
     "mauve": "#ca9ee6",
-    "os": "#ACB0BE",
+    "os": "p:overlay 2",
     "overlay 0": "#737994",
     "overlay 1": "#838ba7",
     "overlay 2": "#949cbb",
@@ -32,10 +32,9 @@
     "yellow": "#e5c890"
   },
   "transient_prompt": {
-    "template": "\udb82\udfc9 \uf105 {{ .Segments.Path.Location }} \uf105 ",
-    "foreground": "p:closer",
-    "background": "transparent",
-    "newline": true
+    "template": "<d>{{ .Segments.Path.Path }} \uf105</d> ",
+    "foreground": "p:subtext 0",
+    "background": "transparent"
   },
   "blocks": [
     {
@@ -46,7 +45,7 @@
           "properties": {
             "cache_duration": "none"
           },
-          "template": "{{.Icon}} <p:closer>\uf105</> ",
+          "template": "{{.Icon}} <p:os>\uf105</> ",
           "foreground": "p:os",
           "type": "os",
           "style": "plain"
@@ -55,59 +54,61 @@
           "properties": {
             "cache_duration": "none"
           },
-          "template": "\uef0e <p:closer>\uf105</> ",
+          "template": "\udb81\ude8c <p:os>\uf105</> ",
+          "foreground": "p:closer",
+          "background": "transparent",
           "type": "status",
-          "style": "diamond",
+          "style": "plain",
           "foreground_templates": [
             "{{ if .Error }}p:fail{{ end }}"
           ]
         },
         {
           "properties": {
-            "branch_icon": "\ue725 ",
             "cache_duration": "none",
-            "cherry_pick_icon": "\ue29b ",
-            "commit_icon": "\uf417 ",
-            "fetch_stash_count": true,
-            "fetch_status": true,
-            "fetch_upstream_icon": true,
-            "fetch_worktree_count": true,
-            "merge_icon": "\ue727 ",
-            "no_commits_icon": "\uf0c3 ",
-            "rebase_icon": "\ue728 ",
-            "revert_icon": "\uf0e2 ",
-            "tag_icon": "\uf412 "
+            "display_default": true
           },
-          "template": "{{ .UpstreamIcon }} {{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }} \ueb4b {{ .StashCount }}{{ end }} <p:closer>\uf105</> ",
-          "foreground": "p:lavender",
-          "type": "git",
+          "template": "<i>aws \uf0c2 {{.Profile}}{{if .Region}}@{{.Region}}{{end}}</i> <p:os>\uf105</> ",
+          "foreground": "p:peach",
+          "type": "aws",
           "style": "plain"
         },
+        {
+          "type": "kubectl",
+          "style": "plain",
+          "foreground": "p:sky",
+          "template": "\udb82\udc33 {{.Context}}{{if .Namespace}} :: {{.Namespace}}{{end}} <p:os>\uf105</> "
+        },
+        {
+        "properties": {
+        "branch_icon": "\ue725 ",
+        "cache_duration": "none",
+        "cherry_pick_icon": "\ue29b ",
+        "commit_icon": "\uf417 ",
+        "fetch_stash_count": true,
+        "fetch_status": true,
+        "fetch_upstream_icon": true,
+        "fetch_worktree_count": true,
+        "merge_icon": "\ue727 ",
+        "no_commits_icon": "\uf0c3 ",
+        "rebase_icon": "\ue728 ",
+        "revert_icon": "\uf0e2 ",
+        "tag_icon": "\uf412 "
+      },
+        "alias": "Git",
+        "template": "{{ .UpstreamIcon }}<u>{{ .HEAD }}</u>{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }} \ueb4b {{ .StashCount }}{{ end }} <p:os>\uf105</> ",
+        "foreground": "p:lavender",
+        "type": "git",
+        "style": "plain"
+      },
         {
           "properties": {
             "cache_duration": "none"
           },
-          "template": "\ue235 {{ if .Error }}{{ .Error }}{{ else }}{{ if .Venv }}{{ .Venv }} {{ end }}{{ .Full }}{{ end }} <p:closer>\uf105</> ",
+          "alias": "Python",
+          "template": "\udb85\udd0e {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ if .Venv }} <d>({{ .Venv }})</d> {{ end }}{{ end }}",
           "foreground": "p:yellow",
           "type": "python",
-          "style": "plain"
-        },
-        {
-          "properties": {
-            "cache_duration": "none"
-          },
-          "template": " \ue7a8 {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }} <p:closer>\uf105</> ",
-          "foreground": "p:peach",
-          "type": "rust",
-          "style": "plain"
-        },
-        {
-          "properties": {
-            "cache_duration": "none"
-          },
-          "template": " \ue620 {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }} <p:closer>\uf105</> ",
-          "foreground": "p:blue",
-          "type": "lua",
           "style": "plain"
         }
       ],
@@ -124,10 +125,18 @@
             "home_icon": "\uf015",
             "style": "agnoster_full"
           },
-          "alias": "Path",
-          "template": "{{ .Path }} <p:closer>\uf105</> ",
-          "foreground": "p:blue",
+          "template": "{{ .Path }} ",
+          "foreground": "p:subtext 0",
           "type": "path",
+          "style": "plain"
+        },
+        {
+          "properties": {
+            "cache_duration": "none"
+          },
+          "template": "\uf105",
+          "foreground": "p:closer",
+          "type": "text",
           "style": "plain"
         }
       ],
