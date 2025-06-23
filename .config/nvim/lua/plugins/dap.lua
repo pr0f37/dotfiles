@@ -19,14 +19,15 @@ return {
       dap.adapters.python = {
         type = "executable",
         command = "python",
-        args = { "-m", "debugpy", "--listen", "{host}:{port}" },
+        -- args = { "-m", "debugpy", "--listen", "{host}:{port}" },
+        args = { "-m", "debugpy.adapter" },
       }
 
       -- Optional: Default configurations for launching Python files
       dap.configurations.python = {
         {
-          name = "Launch current file",
-          type = "debugpy",
+          name = "Pytest",
+          type = "python",
           request = "launch",
           program = "${file}",
           console = "integratedTerminal", -- Can be "externalTerminal" or "none"
@@ -53,5 +54,4 @@ return {
       require("dapui").setup()
     end,
   },
-  require("dap-python").setup("uv"),
 }

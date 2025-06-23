@@ -18,4 +18,14 @@ map("n", "<Leader>de", "<cmd>lua require'dap'.terminate()<CR>", { desc = "Debugg
 map("n", "<Leader>dr", "<cmd>lua require'dap'.run_last()<CR>", { desc = "Debugger run last" })
 
 -- rustaceanvim
-map("n", "<Leader>dt", "<cmd>lua vim.cmd('RustLsp testables')<CR>", { desc = "Debugger testables" })
+map("n", "<Leader>dt", "<cmd>lua vim.cmd('RustLsp testables')<CR>", { desc = "Rust Debugger testables" })
+-- Python tests
+-- Add a keymap to debug the nearest test
+map("n", "<leader>td", function()
+  require("neotest").run.run({ strategy = "dap" })
+end, { desc = "Debug Nearest Test (neotest)" })
+
+-- Optional: Keymap to debug the current file's tests
+map("n", "<leader>tD", function()
+  require("neotest").run.run({ vim.fn.expand("%"), strategy = "dap" })
+end, { desc = "Debug File Tests (neotest)" })

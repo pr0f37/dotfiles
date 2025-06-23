@@ -1,8 +1,9 @@
+vim.opt.termguicolors = true
 return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "catppuccin-frappe",
+      colorscheme = "catppuccin-macchiato",
     },
   },
   {
@@ -24,6 +25,28 @@ return {
     },
   },
   {
+    "catppuccin",
+    opts = {
+      integrations = {
+        blink_cmp = true,
+      },
+    },
+  },
+  {
     "brenoprata10/nvim-highlight-colors",
+    setup = {
+      render = "virtual",
+      virtual_symbol = "■",
+      virtual_symbol_prefix = "",
+
+      ---Set virtual symbol suffix (defaults to ' ')
+      virtual_symbol_suffix = " ",
+
+      ---Set virtual symbol position()
+      ---@usage 'inline'|'eol'|'eow'
+      virtual_symbol_position = "eow",
+
+      enable_hex = true,
+    },
   },
 }

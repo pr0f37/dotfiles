@@ -12,6 +12,10 @@ return {
   require("neotest").setup({
     adapters = {
       ["neotest-python"] = {
+        dap = {
+          justMyCode = false, -- Set to true to only debug your code, not dependencies
+          type = "Pytest",
+        },
         runner = "pytest",
       },
     },
@@ -24,7 +28,8 @@ return {
         { "<leader>dPc", function() require('dap-python').test_class() end, desc = "Debug Class", ft = "python" },
       },
     config = function()
-      require("dap-python").setup(LazyVim.get_pkg_path("debugpy", "/venv/bin/python"))
+      -- require("dap-python").setup(LazyVim.get_pkg_path("debugpy", ".venv/bin/python"))
+      require("dap-python").setup("uv")
     end,
   },
   {
