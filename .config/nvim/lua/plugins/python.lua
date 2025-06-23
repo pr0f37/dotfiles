@@ -17,6 +17,7 @@ return {
           type = "Pytest",
         },
         runner = "pytest",
+        pytest_discover_instances = true,
       },
     },
   }),
