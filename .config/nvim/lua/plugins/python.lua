@@ -8,28 +8,58 @@ return {
       "nvim-lua/plenary.nvim",
       "antoinemadec/FixCursorHold.nvim",
     },
-  },
-  require("neotest").setup({
-    adapters = {
-      ["neotest-python"] = {
-        dap = {
-          justMyCode = false, -- Set to true to only debug your code, not dependencies
-          type = "Pytest",
-        },
-        runner = "pytest",
-        pytest_discover_instances = true,
+    keys = {
+      {
+        "<leader>td",
+        function()
+          require("neotest").run.run({ strategy = "dap" })
+        end,
+        desc = "Debug Nearest Test (neotest)",
+      },
+      {
+        "<leader>tD",
+        function()
+          require("neotest").run.run({ vim.fn.expand("%"), strategy = "dap" })
+        end,
+        desc = "Debug File Tests (neotest)",
       },
     },
-  }),
+    opts = {
+      adapters = {
+        ["neotest-python"] = {
+          dap = {
+            justMyCode = false, -- Set to true to only debug your code, not dependencies
+            type = "Active File",
+          },
+          runner = "pytest",
+          pytest_discover_instances = true,
+        },
+      },
+    },
+  },
   {
     "mfussenegger/nvim-dap-python",
-      -- stylua: ignore
-      keys = {
-        { "<leader>dPt", function() require('dap-python').test_method() end, desc = "Debug Method", ft = "python" },
-        { "<leader>dPc", function() require('dap-python').test_class() end, desc = "Debug Class", ft = "python" },
+    ft = "python",
+    dependencies = { "mfussenegger/nvim-dap" },
+    keys = {
+      {
+        "<leader>dPt",
+        function()
+          require("dap-python").test_method()
+        end,
+        desc = "Debug Python Method",
+        ft = "python",
       },
+      {
+        "<leader>dPc",
+        function()
+          require("dap-python").test_class()
+        end,
+        desc = "Debug Python Class",
+        ft = "python",
+      },
+    },
     config = function()
-      -- require("dap-python").setup(LazyVim.get_pkg_path("debugpy", ".venv/bin/python"))
       require("dap-python").setup("uv")
     end,
   },
@@ -47,7 +77,6 @@ return {
             python = {
               analysis = {
                 disableOrganizeImports = true,
-                -- ignore = { "*" },
                 diagnosticSeverityOverrides = {
                   reportUnusedVariable = "warning", -- or anything
                 },
@@ -71,15 +100,7 @@ return {
             },
           },
         },
-        ruff_lsp = {
-          keys = {
-            {
-              "<leader>co",
-              LazyVim.lsp.action["source.organizeImports"],
-              desc = "Organize Imports",
-            },
-          },
-        },
+        ruff_lsp = {},
       },
       setup = {
         ["ruff"] = function()
