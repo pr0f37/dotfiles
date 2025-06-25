@@ -1,0 +1,26 @@
+return {
+  -- "vimwiki/vimwiki",
+  -- lazy = false, -- Ważne, aby wtyczka była zawsze dostępna
+  -- ft = { "vimwiki", "markdown" }, -- Aktywuj dla tych typów plików
+  -- init = function()
+  --   vim.g.vimwiki_list = {
+  --     {
+  --       path = vim.fn.expand("~/Notes/notes/"),
+  --       syntax = "markdown", -- Używaj składni Markdown
+  --       ext = ".md", -- Rozszerzenie plików
+  --       diary_header = "date", -- Jaką formę ma mieć nagłówek dziennika (np. 'date' dla daty)
+  --       -- Możesz tutaj zdefiniować niestandardowy szablon dla stron dziennika
+  --       -- diary_template = vim.fn.expand("~/.config/nvim/templates/diary_template.md"),
+  --     },
+  --   }
+  -- end,
+  -- -- Mapowania klawiszy (przykłady)
+  -- keys = {
+  --   -- Otwórz/przejdź do strony dziennika dla dzisiejszej daty
+  --   { "<leader>wj", "<Plug>VimwikiDiaryIndex", desc = "Vimwiki: Go to daily journal" },
+  --   -- Przejdź do poprzedniego dnia
+  --   { "<leader>wp", "<Plug>VimwikiDiaryPrevDay", desc = "Vimwiki: Previous day" },
+  --   -- Przejdź do następnego dnia
+  --   { "<leader>wn", "<Plug>VimwikiDiaryNextDay", desc = "Vimwiki: Next day" },
+  -- },
+}
