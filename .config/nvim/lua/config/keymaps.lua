@@ -5,3 +5,5 @@ local map = vim.keymap.set
 
 -- rustaceanvim
 map("n", "<Leader>dt", "<cmd>lua vim.cmd('RustLsp testables')<CR>", { desc = "Rust Debugger testables" })
+map("n", "q", "<Nop>") -- Disable 'q' to prevent recording macros
+map("n", "m", "<Nop>") -- Disable 'm' to prevent marking positions

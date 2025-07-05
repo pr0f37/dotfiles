@@ -28,7 +28,7 @@ return {
       adapters = {
         ["neotest-python"] = {
           dap = {
-            justMyCode = false, -- Set to true to only debug your code, not dependencies
+            justMyCode = true, -- Set to true to only debug your code, not dependencies
             type = "Active File",
           },
           runner = "pytest",

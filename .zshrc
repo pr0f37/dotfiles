@@ -40,6 +40,8 @@ eval "$(zoxide init --cmd cd zsh)"
 eval "$(fzf --zsh)"
 eval "$(kubectl completion zsh)"
 eval "$(uv generate-shell-completion zsh)"
+source /opt/local/share/fzf/shell/key-bindings.zsh
+source /opt/local/share/fzf/shell/completion.zsh
 
 # # history setup
 HISTFILE=~/.zsh_history
