@@ -35,32 +35,19 @@ return {
           request = "launch",
           program = "${file}",
           console = "integratedTerminal",
-          justMyCode = true,
         },
         {
-          name = "FastAPI with envs",
-          type = "debugpy",
+          name = "FastAPI (Uvicorn)",
+          type = "python",
           request = "launch",
-          module = "gunicorn",
-          env = {
-            OBJC_DISABLE_INITIALIZE_FORK_SAFETY = "YES",
-            POSTGRES_HOST = "0.0.0.0",
-            CELERY_BROKER_URL = "redis://0.0.0.0:6379/0",
-            CELERY_RESULT_BACKEND = "redis://0.0.0.0:6379/1",
-            REDIS_URI = "redis://0.0.0.0:6379/2",
-            AZURE_BLOB_CONNECTION_STRING = "DefaultEndpointsProtocol=http;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;BlobEndpoint=http://0.0.0.0:10000/devstoreaccount1;QueueEndpoint=http://0.0.0.0:10001/devstoreaccount1;TableEndpoint=http://0.0.0.0:10002/devstoreaccount1;",
-            REDIS_USE_SSL = "False",
-            CELERY_QUEUE = "default",
-          },
+          module = "uvicorn",
           args = {
-            "-c",
-            "app/api/gunicorn_config.py",
-            "-w",
-            "1",
-            "-t",
-            "0",
-            "app.main:app",
+            -- OPTIMIZATION: Use workspaceFolder to make it portable
+            "${workspaceFolder}/cr_scraper/api/main:app",
+            "--host=0.0.0.0",
+            "--port=8000",
           },
+          console = "integratedTerminal",
         },
       }
 
@@ -99,7 +86,7 @@ return {
       dapui.setup({
         layouts = {
           {
-            elements = { "repl" },
+            elements = { "repl", "console" },
             size = 10,
             position = "bottom",
           },
