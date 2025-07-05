@@ -50,7 +50,6 @@ return {
     ft = { "markdown" },
     config = function()
       require("which-key").add({
-
         { "<leader>m", group = "markdown", icon = { icon = "", color = "blue" } },
         { "<leader>mp", "<cmd>MarkdownPreviewToggle<cr>", desc = "markdown preview" },
       })
