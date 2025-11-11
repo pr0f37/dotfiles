@@ -16,7 +16,7 @@ return {
     ft = "markdown",
     config = function()
       require("render-markdown").setup({
-        completions = { blink = { enabled = true } },
+        completions = { lsp = { enabled = true } },
         bullet = {
           icons = { "", "○", "◆", "◇" },
         },
