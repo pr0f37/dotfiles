@@ -43,7 +43,7 @@ return {
           module = "uvicorn",
           args = {
             -- OPTIMIZATION: Use workspaceFolder to make it portable
-            "${workspaceFolder}/cr_scraper/api/main:app",
+            "cr_scraper.api.main:app",
             "--host=0.0.0.0",
             "--port=8000",
           },
@@ -86,19 +86,19 @@ return {
       dapui.setup({
         layouts = {
           {
-            elements = { "repl", "console" },
-            size = 10,
-            position = "bottom",
-          },
-          {
-            elements = { "scopes", "breakpoints" },
+            elements = { "scopes" },
             size = 40,
             position = "left",
           },
           {
-            elements = { "stacks", "watches" },
+            elements = { "stacks", "watches", "breakpoints" },
             position = "right",
             size = 40,
+          },
+          {
+            elements = { "repl" },
+            size = 10,
+            position = "bottom",
           },
         },
       })

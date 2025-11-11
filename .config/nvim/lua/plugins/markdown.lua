@@ -16,7 +16,7 @@ return {
     ft = "markdown",
     config = function()
       require("render-markdown").setup({
-        completions = { blink = { enabled = true } },
+        completions = { lsp = { enabled = true } },
         bullet = {
           icons = { "", "○", "◆", "◇" },
         },
@@ -50,7 +50,6 @@ return {
     ft = { "markdown" },
     config = function()
       require("which-key").add({
-
         { "<leader>m", group = "markdown", icon = { icon = "", color = "blue" } },
         { "<leader>mp", "<cmd>MarkdownPreviewToggle<cr>", desc = "markdown preview" },
       })
