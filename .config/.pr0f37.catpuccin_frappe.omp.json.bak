@@ -42,7 +42,7 @@
       "alignment": "left",
       "segments": [
         {
-          "options": {
+          "properties": {
             "cache_duration": "none"
           },
           "template": "{{.Icon}} <p:os>\uf105</> ",
@@ -51,7 +51,7 @@
           "style": "plain"
         },
         {
-          "options": {
+          "properties": {
             "cache_duration": "none"
           },
           "template": "\udb81\ude8c <p:os>\uf105</> ",
@@ -64,7 +64,7 @@
           ]
         },
         {
-          "options": {
+          "properties": {
             "cache_duration": "none",
             "display_default": true
           },
@@ -74,35 +74,35 @@
           "style": "plain"
         },
         {
-          "template": "\udb82\udc33 {{.Context}}{{if .Namespace}} :: {{.Namespace}}{{end}} <p:os>\uf105</> ",
-          "foreground": "p:sky",
           "type": "kubectl",
-          "style": "plain"
+          "style": "plain",
+          "foreground": "p:sky",
+          "template": "\udb82\udc33 {{.Context}}{{if .Namespace}} :: {{.Namespace}}{{end}} <p:os>\uf105</> "
         },
         {
-          "options": {
-            "branch_icon": "\ue725 ",
-            "cache_duration": "none",
-            "cherry_pick_icon": "\ue29b ",
-            "commit_icon": "\uf417 ",
-            "fetch_stash_count": true,
-            "fetch_status": true,
-            "fetch_upstream_icon": true,
-            "fetch_worktree_count": true,
-            "merge_icon": "\ue727 ",
-            "no_commits_icon": "\uf0c3 ",
-            "rebase_icon": "\ue728 ",
-            "revert_icon": "\uf0e2 ",
-            "tag_icon": "\uf412 "
-          },
-          "alias": "Git",
-          "template": "{{ .UpstreamIcon }}<u>{{ .HEAD }}</u>{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }} \ueb4b {{ .StashCount }}{{ end }} <p:os>\uf105</> ",
-          "foreground": "p:lavender",
-          "type": "git",
-          "style": "plain"
-        },
+        "properties": {
+        "branch_icon": "\ue725 ",
+        "cache_duration": "none",
+        "cherry_pick_icon": "\ue29b ",
+        "commit_icon": "\uf417 ",
+        "fetch_stash_count": true,
+        "fetch_status": true,
+        "fetch_upstream_icon": true,
+        "fetch_worktree_count": true,
+        "merge_icon": "\ue727 ",
+        "no_commits_icon": "\uf0c3 ",
+        "rebase_icon": "\ue728 ",
+        "revert_icon": "\uf0e2 ",
+        "tag_icon": "\uf412 "
+      },
+        "alias": "Git",
+        "template": "{{ .UpstreamIcon }}<u>{{ .HEAD }}</u>{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }} \ueb4b {{ .StashCount }}{{ end }} <p:os>\uf105</> ",
+        "foreground": "p:lavender",
+        "type": "git",
+        "style": "plain"
+      },
         {
-          "options": {
+          "properties": {
             "cache_duration": "none"
           },
           "alias": "Python",
@@ -119,7 +119,7 @@
       "alignment": "left",
       "segments": [
         {
-          "options": {
+          "properties": {
             "cache_duration": "none",
             "folder_icon": "..\ue5fe..",
             "home_icon": "\uf015",
@@ -131,7 +131,7 @@
           "style": "plain"
         },
         {
-          "options": {
+          "properties": {
             "cache_duration": "none"
           },
           "template": "\uf105",
@@ -143,6 +143,6 @@
       "newline": true
     }
   ],
-  "version": 4,
+  "version": 3,
   "final_space": true
 }

@@ -1,7 +1,5 @@
 export LANG=en_US.UTF-8
 export XDG_CONFIG_HOME=$HOME/.config
-export LDFLAGS="-L/usr/local/opt/libpq/lib"
-export CPPFLAGS="-I/usr/local/opt/libpq/include"
 export PKG_CONFIG_PATH="/usr/local/opt/libpq/lib/pkgconfig"
 
 export LDFLAGS="-L/opt/local/lib"
@@ -9,31 +7,24 @@ export CPPFLAGS="-I/opt/local/include"
 
 export PATH="/usr/local/sbin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
-ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
-[ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
-[ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
-source "${ZINIT_HOME}/zinit.zsh"
+
 source "$HOME/.cargo/env" 
+# source antidote
+source ~/.antidote/antidote.zsh
+antidote load
 
 # styling
+zstyle ':plugin:ez-compinit' 'compstyle' 'ohmy'
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'               # Make completions non case-sensitive
 zstyle ':completion:*' list-colors 'di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'            # Add colors
 zstyle ':completion:*' menu-no
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -l --tree -L=2 --icons=auto --color=always --header --no-permissions --no-user --no-time --sort=type $realpath'
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'eza -l --tree -L=2 --icons=auto --color=always --header --no-permissions --no-user --no-time --sort=type $realpath'
 zstyle ':fzf-tab:complete:eza:*' fzf-preview 'if [ -d $realpath ]; then eza -l --tree --icons=auto --color=always --header --no-permissions --no-user --no-time --sort=type $realpath; elif [[ "$(file -b --mime-type $realpath)" == "text"* ]]; then bat --style=numbers --color=always $realpath; fi'
-zstyle ':fzf-tab:*' popup-min-size 1000
+zstyle ':fzf-tab:*' popup-min-size 70
 zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
-zinit for \
-    light-mode \
-  Aloxaf/fzf-tab \
-  zsh-users/zsh-autosuggestions \
-  zsh-users/zsh-completions \
-  zsh-users/zsh-syntax-highlighting
 
 FPATH="$HOME/.docker/completions:$FPATH"
-autoload -Uz compinit && compinit
-zinit cdreplay -q 
 # completions
 
 eval "$(zoxide init --cmd cd zsh)"
