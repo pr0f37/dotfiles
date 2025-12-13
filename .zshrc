@@ -31,7 +31,7 @@ eval "$(zoxide init --cmd cd zsh)"
 eval "$(fzf --zsh)"
 eval "$(kubectl completion zsh)"
 eval "$(uv generate-shell-completion zsh)"
-
+eval "$(fnm completions --shell zsh)"
 # # history setup
 HISTFILE=~/.zsh_history
 HISTSIZE=5000
@@ -55,8 +55,9 @@ alias ls="eza"
 alias vim=nvim
 alias tree="eza -l --tree -L=1 --icons=auto --color=auto --header --sort=type"
 
-source /opt/local/share/nvm/init-nvm.sh
 
 if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
   eval "$(oh-my-posh init zsh --config $HOME/.config/.pr0f37.catpuccin_frappe.omp.json)"
 fi
+
+eval "$(fnm env --use-on-cd --shell zsh)"
