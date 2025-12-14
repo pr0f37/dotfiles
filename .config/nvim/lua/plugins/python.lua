@@ -8,22 +8,6 @@ return {
   --     "nvim-lua/plenary.nvim",
   --     "antoinemadec/FixCursorHold.nvim",
   --   },
-  --   keys = {
-  --     {
-  --       "<leader>td",
-  --       function()
-  --         require("neotest").run.run({ strategy = "dap" })
-  --       end,
-  --       desc = "Debug Nearest Test (neotest)",
-  --     },
-  --     {
-  --       "<leader>tD",
-  --       function()
-  --         require("neotest").run.run({ vim.fn.expand("%"), strategy = "dap" })
-  --       end,
-  --       desc = "Debug File Tests (neotest)",
-  --     },
-  --   },
   --   opts = {
   --     adapters = {
   --       ["neotest-python"] = {
@@ -38,79 +22,53 @@ return {
   --   },
   -- },
   -- {
-  --   "mfussenegger/nvim-dap-python",
-  --   ft = "python",
-  --   dependencies = { "mfussenegger/nvim-dap" },
-  --   keys = {
-  --     {
-  --       "<leader>dPt",
-  --       function()
-  --         require("dap-python").test_method()
-  --       end,
-  --       desc = "Debug Python Method",
-  --       ft = "python",
+  --   "neovim/nvim-lspconfig",
+  --   opts = {
+  --     servers = {
+  --       pyright = {
+  --         capabilities = (function()
+  --           local capabilities = vim.lsp.protocol.make_client_capabilities()
+  --           capabilities.textDocument.publishDiagnostics.tagSupport.valueSet = { 2 }
+  --           return capabilities
+  --         end)(),
+  --         settings = {
+  --           python = {
+  --             analysis = {
+  --               disableOrganizeImports = true,
+  --               diagnosticSeverityOverrides = {
+  --                 -- reportUnusedVariable = "warning", -- or anything
+  --               },
+  --               typeCheckingMode = "basic",
+  --             },
+  --           },
+  --         },
+  --       },
+  --       ruff = {
+  --         cmd_env = { RUFF_TRACE = "messages" },
+  --         init_options = {
+  --           settings = {
+  --             logLevel = "error",
+  --           },
+  --         },
+  --         keys = {
+  --           {
+  --             "<leader>co",
+  --             LazyVim.lsp.action["source.organizeImports"],
+  --             desc = "Organize Imports",
+  --           },
+  --         },
+  --       },
+  --       ruff_lsp = {},
   --     },
-  --     {
-  --       "<leader>dPc",
-  --       function()
-  --         require("dap-python").test_class()
-  --       end,
-  --       desc = "Debug Python Class",
-  --       ft = "python",
-  --     },
+  --     -- setup = {
+  --     --   ["ruff"] = function()
+  --     --     LazyVim.lsp.on_attach(function(client, _)
+  --     --       --use ruff as a formatter and pyright as linter, type checker and hover provider
+  --     --       client.server_capabilities.hoverProvider = false
+  --     --       client.server_capabilities.diagnosticProvider = nil
+  --     --     end, "ruff")
+  --     --   end,
+  --     -- },
   --   },
-  --   config = function()
-  --     require("dap-python").setup("uv")
-  --   end,
   -- },
-  {
-    "neovim/nvim-lspconfig",
-    opts = {
-      servers = {
-        pyright = {
-          capabilities = (function()
-            local capabilities = vim.lsp.protocol.make_client_capabilities()
-            capabilities.textDocument.publishDiagnostics.tagSupport.valueSet = { 2 }
-            return capabilities
-          end)(),
-          settings = {
-            python = {
-              analysis = {
-                disableOrganizeImports = true,
-                diagnosticSeverityOverrides = {
-                  -- reportUnusedVariable = "warning", -- or anything
-                },
-                typeCheckingMode = "basic",
-              },
-            },
-          },
-        },
-        ruff = {
-          cmd_env = { RUFF_TRACE = "messages" },
-          init_options = {
-            settings = {
-              logLevel = "error",
-            },
-          },
-          keys = {
-            {
-              "<leader>co",
-              LazyVim.lsp.action["source.organizeImports"],
-              desc = "Organize Imports",
-            },
-          },
-        },
-        ruff_lsp = {},
-      },
-      -- setup = {
-      --   ["ruff"] = function()
-      --     LazyVim.lsp.on_attach(function(client, _)
-      --       --use ruff as a formatter and pyright as linter, type checker and hover provider
-      --       client.server_capabilities.hoverProvider = false
-      --       client.server_capabilities.diagnosticProvider = nil
-      --     end, "ruff")
-      --   end,
-      -- },
-    },
-  },
 }

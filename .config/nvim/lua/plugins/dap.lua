@@ -1,8 +1,8 @@
 return {
   {
     "mfussenegger/nvim-dap",
-    optional = true,
-    -- OPTIMIZATION: Explicitly list dependency used in config
+    --   optional = true,
+    --   -- OPTIMIZATION: Explicitly list dependency used in config
     dependencies = {
       "rcarriga/nvim-dap-ui",
     },
@@ -19,15 +19,15 @@ return {
       dap.listeners.before.attach.dapui_config = function()
         dapui.open()
       end
-
-      -- Listeners for closing dapui are kept commented out as per your preference.
-
-      dap.adapters.python = {
-        type = "executable",
-        command = "python", -- Ensure this python is in your PATH and has debugpy
-        args = { "-m", "debugpy.adapter" },
-      }
-
+      --
+      --     -- Listeners for closing dapui are kept commented out as per your preference.
+      --
+      --     dap.adapters.python = {
+      --       type = "executable",
+      --       command = "python", -- Ensure this python is in your PATH and has debugpy
+      --       args = { "-m", "debugpy.adapter" },
+      --     }
+      --
       dap.configurations.python = {
         {
           name = "Active File",
@@ -37,7 +37,7 @@ return {
           console = "integratedTerminal",
         },
         {
-          name = "FastAPI (Uvicorn)",
+          name = "FastAPI (CR SCRAPER)",
           type = "python",
           request = "launch",
           module = "uvicorn",
@@ -50,7 +50,7 @@ return {
           console = "integratedTerminal",
         },
       }
-
+      --
       -- ENHANCEMENT: Add useful keymaps for a better debugging experience
       vim.keymap.set("n", "<F5>", function()
         require("dap").continue()
