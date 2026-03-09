@@ -46,15 +46,15 @@ setopt hist_ignore_dups
 setopt hist_save_no_dups
 setopt hist_find_no_dups
 setopt hist_verify
-bindkey '^[[A' history-search-backward
-bindkey '^[[B' history-search-forward
+bindkey '^[[A' history-beginning-search-backward
+bindkey '^[[B' history-beginning-search-forward
 
 # # aliases
 alias l="eza -la --color=auto --icons=auto"
 alias ls="eza"
 alias vim=nvim
 alias tree="eza -l --tree -L=1 --icons=auto --color=auto --header --sort=type"
-
+alias brew= zb
 
 if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
   eval "$(oh-my-posh init zsh --config $HOME/.config/.pr0f37.catpuccin_frappe.omp.json)"
