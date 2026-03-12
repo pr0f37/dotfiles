@@ -54,7 +54,8 @@ alias l="eza -la --color=auto --icons=auto"
 alias ls="eza"
 alias vim=nvim
 alias tree="eza -l --tree -L=1 --icons=auto --color=auto --header --sort=type"
-alias brew= zb
+alias brew=zb
+alias z="zellij -l welcome"
 
 if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
   eval "$(oh-my-posh init zsh --config $HOME/.config/.pr0f37.catpuccin_frappe.omp.json)"
